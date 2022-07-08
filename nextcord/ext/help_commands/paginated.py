@@ -1,7 +1,6 @@
-from typing import TYPE_CHECKING, List, Tuple
+from typing import TYPE_CHECKING
 
 import nextcord
-from nextcord.ext import commands
 
 from .errors import MissingDependencyError
 
@@ -15,6 +14,15 @@ except ImportError:
     HAS_MENUS = False
     ListPageSource = object
     ButtonMenuPages = object
+
+if TYPE_CHECKING:
+    from typing import List, Tuple
+    from nextcord.ext import commands
+
+    from nextcord.ext import menus
+
+    ListPageSource = menus.ListPageSource
+    ButtonMenuPages = menus.ButtonMenuPages
 
 if TYPE_CHECKING:
     from nextcord.ext import menus
